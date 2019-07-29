@@ -1,0 +1,34 @@
+#include<iostream>
+#include<string>
+#include<vector>
+
+using namespace std;
+
+//Refer to Jongman Book. 
+string reverse(string::iterator& it){
+
+	char head = *it;
+	it++;
+	
+	if(head == 'w' || head == 'b')
+		return string(1, head); 	
+
+	string zero_zero = reverse(it);
+	string zero_one = reverse(it);
+	string one_zero = reverse(it);
+	string one_one = reverse(it);
+		
+	return 'x' + one_zero + one_one + zero_zero + zero_one;
+}
+
+int main() {
+	int N;
+	cin >> N;
+	while (N--) {
+		string input;
+		cin >> input;
+		string::iterator it = input.begin();
+		cout << reverse(it) << endl;
+	}
+	return 0;
+}
